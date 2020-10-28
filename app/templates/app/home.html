@@ -1,0 +1,116 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% load static %}
+
+{% block plugins %}
+    
+    {# bxSlider #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+{% endblock %}
+
+{% block contenido %}
+
+    {################# Slider ###################}
+    <div class="slider">
+        <div>
+            <img class="banner" src="{% static 'app/img/banner/banner1.jpg' %}" alt="">
+        </div>
+        <div>
+            <img class="banner" src="{% static 'app/img/banner/banner2.jpg' %}" alt="">
+        </div>
+        <div>
+            <img class="banner" src="{% static 'app/img/banner/banner3.jpg' %}" alt="">
+        </div>
+    </div>
+
+    {################# Servicios ################}
+    <div class="servicios">
+        
+        <div class="servicio">
+            <div class="contenedor_servicio">
+                <img src="{% static 'app/img/servicio/serv1.jpeg' %}" alt="">
+                
+                <div class="detalle">
+                    <h2>Simple</h2>
+                    <h3>Desde $30.000</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="servicio">
+            <div class="contenedor_servicio">
+                <img src="{% static 'app/img/servicio/serv2.jpeg' %}" alt="">
+                
+                <div class="detalle">
+                    <h2>Gold</h2>
+                    <h3>Desde $70.000</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="servicio">
+            <div class="contenedor_servicio">
+                <img src="{% static 'app/img/servicio/serv3.jpeg' %}" alt="">
+                
+                <div class="detalle">
+                    <h2>Premiun</h2>
+                    <h3>Desde $150.000</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {################# Reseñas ##################}
+    <div class="resenas">
+            
+        <div class="resena">
+            <div class="resena-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Corrupti enim voluptatibus rerum architecto.
+            </div>
+            
+            <p>Lorem ipsum</p>
+        </div>
+
+        <div class="resena">
+            <div class="resena-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Corrupti enim voluptatibus rerum architecto.
+            </div>
+            <p>Lorem ipsum</p>
+        </div>
+
+        <div class="resena">
+            <div class="resena-text">
+                Oink ipsum, dolor sit amet consectetur adipisicing elit.
+                Corrupti enim voluptatibus rerum architecto.
+            </div>
+            <p>Lorem ipsum</p>
+        </div>
+    </div> 
+
+{% endblock  %}
+
+{% block js %}
+    
+    <!--Slider script-->
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('.slider').bxSlider({
+                auto: true,
+                pause: 2000,
+                mode:'fade', //horizontal, vertical, fade
+                 
+            });
+        });
+    
+    </script>
+{% endblock  %}
+
+

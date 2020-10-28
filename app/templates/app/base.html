@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash |{% block title %}{% endblock %}</title>
+   
+    {# load css main file #}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <link rel="icon" href="{% static 'app/img/car.png' %}">
+
+    {% block plugins %}
+    {% endblock %}
+
+
+</head>
+<body>
+    {# sera heredado #}
+    <header id="header">
+        
+        <img src="{% static 'app/img/menuiconwhite.png' %}" alt="menu" class="menu" id="menu">
+        
+        <div class="contenedor_logo">
+            
+            <img src="{% static 'app/img/logo.png' %}" alt="logo" class="logo">
+            
+            <div id="contenedor_feriado">
+                <p>Proximo feriado</p>
+                <p id="feriado"></p>
+            </div>
+        
+        </div>
+        
+        <div>
+            <nav id="nav">
+                <ul>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mision' %}">Quienes Somos</a>
+                    </li>
+                    <li>
+                        <a href="#">Iniciar Sesion</a>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <div id="contenido">
+
+        {% block contenido %}
+        {% endblock  %}
+
+    </div>
+
+    {# sera heredado #}
+    <footer>
+        <div>
+			<nav>
+				<ul>
+                    <li>
+                        <span>Copyright 2020 © Todos Los Derechos Reservados </span> |
+                    </li>
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contacto' %}">Contacto</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'mision' %}">Quienes Somos</a>
+                    </li>
+				</ul>
+			</nav>
+        </div>
+    </footer>
+
+    {# sera heredado #}
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
+
+    <script src="{% static 'app/js/menu.js' %}"></script>
+    <script src="{% static 'app/js/feriados.js' %}"></script>
+    
+    {# all js files located at bottom DOM not included in base.template #}
+    {% block js %}
+    {% endblock %}
+
+
+</body>
+</html>
