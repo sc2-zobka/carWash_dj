@@ -15,15 +15,13 @@
 
     {################# Slider ###################}
     <div class="slider">
-        <div>
-            <img class="banner" src="{% static 'app/img/banner/banner1.jpg' %}" alt="">
-        </div>
-        <div>
-            <img class="banner" src="{% static 'app/img/banner/banner2.jpg' %}" alt="">
-        </div>
-        <div>
-            <img class="banner" src="{% static 'app/img/banner/banner3.jpg' %}" alt="">
-        </div>
+        {% for s in slider %}
+            <div>
+                {% if s.imagen %}
+                    <img class="banner" src="{{ s.imagen.url }}" alt="">
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
 
     {################# Servicios ################}
@@ -32,7 +30,7 @@
     
         {% comment %}
             views.py send us a data{'servicios':servicios}, 
-            hence we iterate it to fetch all servicios objects in it   
+            hence we iterate it to fetch all servicios objects
         {% endcomment %}
         {% for s in servicios %}
             <div class="servicio">

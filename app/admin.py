@@ -11,7 +11,7 @@ class ServicioAdmin(admin.ModelAdmin):
     '''
     # display column's header on list_view
     list_display = ["nombre", "precio", "descripcion"]
-    # display a search tool
+    # display a search box tool
     search_fields = ["nombre"]
     # display a filter tool
     list_filter = ["nombre"]
@@ -22,7 +22,7 @@ class ServicioAdmin(admin.ModelAdmin):
 class SilderAdmin(admin.ModelAdmin):
     '''
         Display components on "Slider" admin section
-        based on Silder model's fields
+        based on Slider model's fields
     '''
     list_display = ["nombre", "descripcion", "imagen"]
     search_fields = ["nombre", "imagen"]
