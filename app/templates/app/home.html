@@ -27,41 +27,30 @@
     </div>
 
     {################# Servicios ################}
+    {% load humanize %}
     <div class="servicios">
+    
+        {% comment %}
+            views.py send us a data{'servicios':servicios}, 
+            hence we iterate it to fetch all servicios objects in it   
+        {% endcomment %}
+        {% for s in servicios %}
+            <div class="servicio">
+                <div class="contenedor_servicio">
+                    
+                    {% if s.imagen %}
+                        <img src="{{ s.imagen.url }}" alt="">
+                    {% endif %}
+
+                    <div class="detalle">
+                        <h2>{{ s.nombre | capfirst }}</h2>
+                        <h3>${{ s.precio | intcomma }}</h3>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
         
-        <div class="servicio">
-            <div class="contenedor_servicio">
-                <img src="{% static 'app/img/servicio/serv1.jpeg' %}" alt="">
-                
-                <div class="detalle">
-                    <h2>Simple</h2>
-                    <h3>Desde $30.000</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="servicio">
-            <div class="contenedor_servicio">
-                <img src="{% static 'app/img/servicio/serv2.jpeg' %}" alt="">
-                
-                <div class="detalle">
-                    <h2>Gold</h2>
-                    <h3>Desde $70.000</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="servicio">
-            <div class="contenedor_servicio">
-                <img src="{% static 'app/img/servicio/serv3.jpeg' %}" alt="">
-                
-                <div class="detalle">
-                    <h2>Premiun</h2>
-                    <h3>Desde $150.000</h3>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     {################# Reseñas ##################}
