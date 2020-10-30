@@ -14,10 +14,18 @@
 {% block contenido %}
     
     {# Mision #}
-    <blockquote>
-        Brindar un servicio de limpieza integro y eficaz para nuestros clientes.
-        <span>Misión</span>
-    </blockquote>
+        {# Implementar singleton a nivel de modelo#}
+        {% if mision.descripcion %}
+            <blockquote>
+                {{ mision.descripcion }}
+                <span>Misión</span>
+            </blockquote>
+        {% else %}
+                <blockquote>
+                    Car Wash!
+                    <span>Misión</span>
+                </blockquote>
+        {% endif %}    
     
     {# Vision #}
     <blockquote>
