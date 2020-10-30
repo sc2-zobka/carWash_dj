@@ -28,29 +28,13 @@
 
     {# Galeria #}
     <div class="galeria">
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic2.jpeg' %} ">
-            <img src="{% static 'app/img/galeria/pic2.jpeg' %} ">
-        </a>
-
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic3.jpeg' %}">
-            <img src="{% static 'app/img/galeria/pic3.jpeg' %}">
-        </a>
-
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic4.jpg' %}">
-            <img src="{% static 'app/img/galeria/pic4.jpg' %}">
-        </a>
-
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic5.jpg' %}">
-            <img src="{% static 'app/img/galeria/pic5.jpg' %}">
-        </a>
-
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic6.jpeg' %}">
-            <img src="{% static 'app/img/galeria/pic6.jpeg' %}">
-        </a>
-
-        <a data-fancybox="gallery" href="{% static 'app/img/galeria/pic7.jpg' %}">
-            <img src="{% static 'app/img/galeria/pic7.jpg' %}">
-        </a>
+        {% for g in galeria %}
+            {% if  g.imagen %}
+                <a data-fancybox="gallery" href="{{ g.imagen.url }} ">
+                    <img src="{{ g.imagen.url }} ">
+                </a>
+            {% endif %}
+        {% endfor %}
     </div>
 
 {% endblock  %}
