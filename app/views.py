@@ -1,9 +1,5 @@
 from django.shortcuts import render
-<<<<<<< HEAD
-from .models import Servicio, Slider
-=======
 from .models import Servicio, Slider, Galeria
->>>>>>> feature/galeria-model
 
 # Create your views here.
 

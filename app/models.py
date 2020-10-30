@@ -30,8 +30,28 @@ class Slider(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name = "Slider"
+        verbose_name_plural = "Slider"
+
+
+class Galeria(models.Model):
+
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField()
+    imagen = models.ImageField(upload_to="galeria", null=True)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Galeria"
+        verbose_name_plural = "Galeria"
+
 
 # Insumo must be handled outside of Django Admin
+
+
 '''class Insumo(models.Model):
     nombre = models.CharField(validators=[MinLengthValidator(
                                 limit_value=3,
