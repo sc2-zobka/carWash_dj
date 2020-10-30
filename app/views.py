@@ -1,5 +1,9 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from .models import Servicio, Slider
+=======
+from .models import Servicio, Slider, Galeria
+>>>>>>> feature/galeria-model
 
 # Create your views here.
 
@@ -7,6 +11,7 @@ from .models import Servicio, Slider
 def home(request):
     # fetch all Servicios objects into a list[]
     servicios = Servicio.objects.all()
+    fotos_slider = Slider.objects.all()
 
     fotos_slider = Slider.objects.all()
 
@@ -24,4 +29,9 @@ def contacto(request):
 
 
 def mision(request):
-    return render(request, 'app/mision.html')
+
+    fotos_galeria = Galeria.objects.all()
+    data = {
+        'galeria': fotos_galeria
+    }
+    return render(request, 'app/mision.html', data)

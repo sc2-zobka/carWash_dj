@@ -15,6 +15,10 @@ class Servicio(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name = "Servicio"
+        verbose_name_plural = "Servicio"
 
 
 class Slider(models.Model):

@@ -1,7 +1,11 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from .models import Servicio, Slider  # Insumo
 
 # Register your models here.
+=======
+from .models import Servicio, Slider, Galeria  # Insumo
+>>>>>>> feature/galeria-model
 
 
 class ServicioAdmin(admin.ModelAdmin):
@@ -29,9 +33,27 @@ class SilderAdmin(admin.ModelAdmin):
     list_filter = ["nombre", "imagen"]
     list_per_page = 1
 
+<<<<<<< HEAD
 
 admin.site.register(Servicio, ServicioAdmin)
 admin.site.register(Slider, SilderAdmin)
+=======
+
+class GaleriaAdmin(admin.ModelAdmin):
+    '''
+        Display components on "Galeria" admin section
+        based on Slider model's fields
+    '''
+    list_display = ["nombre", "descripcion", "imagen"]
+    search_fields = ["nombre", "imagen"]
+    list_filter = ["nombre", "imagen"]
+    list_per_page = 1
+
+
+admin.site.register(Servicio, ServicioAdmin)
+admin.site.register(Slider, SilderAdmin)
+admin.site.register(Galeria, GaleriaAdmin)
+>>>>>>> feature/galeria-model
 
 # change admin title
 admin.site.site_header = "Administración Car Wash"
