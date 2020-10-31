@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Servicio, Slider, Galeria  # Insumo
+from .models import Servicio, Slider, Galeria, Mision, Vision  # Insumo
 
 
 class ServicioAdmin(admin.ModelAdmin):
@@ -31,7 +31,7 @@ class SilderAdmin(admin.ModelAdmin):
 class GaleriaAdmin(admin.ModelAdmin):
     '''
         Display components on "Galeria" admin section
-        based on Slider model's fields
+        based on Galeria model's fields
     '''
     list_display = ["nombre", "descripcion", "imagen"]
     search_fields = ["nombre", "imagen"]
@@ -39,9 +39,33 @@ class GaleriaAdmin(admin.ModelAdmin):
     list_per_page = 1
 
 
+class MisionAdmin(admin.ModelAdmin):
+    '''
+        Display components on "Mision" admin section
+        based on Mision model's fields
+    '''
+    list_display = ["nombre", "descripcion"]
+    search_fields = ["nombre"]
+    list_filter = ["nombre"]
+    list_per_page = 2
+
+
+class VisionAdmin(admin.ModelAdmin):
+    '''
+        Display components on "Vision" admin section
+        based on Vision model's fields
+    '''
+    list_display = ["nombre", "descripcion"]
+    search_fields = ["nombre"]
+    list_filter = ["nombre"]
+    list_per_page = 2
+
+
 admin.site.register(Servicio, ServicioAdmin)
 admin.site.register(Slider, SilderAdmin)
 admin.site.register(Galeria, GaleriaAdmin)
+admin.site.register(Mision, MisionAdmin)
+admin.site.register(Vision, VisionAdmin)
 
 # change admin title
 admin.site.site_header = "Administración Car Wash"
