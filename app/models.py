@@ -62,6 +62,18 @@ class Mision(models.Model):
         verbose_name_plural = "Mision"
 
 
+class Vision(models.Model):
+
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField()
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Vision"
+        verbose_name_plural = "Vision"
+
 # Insumo must be handled outside of Django Admin
 
 
