@@ -1,75 +1,52 @@
 from django.contrib import admin
-from .models import Servicio, Slider, Galeria, Mision, Vision  # Insumo
+from .models import Insumo, Servicio, Contacto, Slider, Galeria, Mision, Vision
 
+class InsumoAdmin(admin.ModelAdmin):
+    list_display = "nombre", "precio", "stock", "imagen"
+    search_fields = ["nombre"]
+    sortable_by = ["precio", "stock"]
+    list_per_page = 10
 
 class ServicioAdmin(admin.ModelAdmin):
-    '''
-        Display components on "Servicio" admin section
-        based on Servicio model's fields
-    '''
-    # display column's header on list_view
-    list_display = ["nombre", "precio", "descripcion"]
-    # display a search box tool
+    list_display = "nombre", "precio", "descripcion", "imagen"
     search_fields = ["nombre"]
-    # display a filter tool
-    list_filter = ["nombre"]
-    # display paginator at the bottom of the list_view
-    list_per_page = 1
+    sortable_by = ["precio"]
+    list_per_page = 10
 
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = "nombre", "telefono", "email", "mensaje"
+    search_fields = ["nombre", "email"]
+    list_per_page = 10
 
-class SilderAdmin(admin.ModelAdmin):
-    '''
-        Display components on "Slider" admin section
-        based on Slider model's fields
-    '''
-    list_display = ["nombre", "descripcion", "imagen"]
-    search_fields = ["nombre", "imagen"]
-    list_filter = ["nombre", "imagen"]
-    list_per_page = 1
-
+class SliderAdmin(admin.ModelAdmin):
+    list_display = "nombre", "imagen"
+    search_fields = ["nombre"]
+    list_per_page = 10
 
 class GaleriaAdmin(admin.ModelAdmin):
-    '''
-        Display components on "Galeria" admin section
-        based on Galeria model's fields
-    '''
-    list_display = ["nombre", "descripcion", "imagen"]
-    search_fields = ["nombre", "imagen"]
-    list_filter = ["nombre", "imagen"]
-    list_per_page = 1
-
+    list_display = "nombre", "imagen"
+    search_fields = ["nombre"]
+    list_per_page = 10
 
 class MisionAdmin(admin.ModelAdmin):
-    '''
-        Display components on "Mision" admin section
-        based on Mision model's fields
-    '''
-    list_display = ["nombre", "descripcion"]
+    list_display = "nombre", "mensaje",
     search_fields = ["nombre"]
-    list_filter = ["nombre"]
-    list_per_page = 2
-
+    list_per_page = 10
 
 class VisionAdmin(admin.ModelAdmin):
-    '''
-        Display components on "Vision" admin section
-        based on Vision model's fields
-    '''
-    list_display = ["nombre", "descripcion"]
+    list_display = "nombre", "mensaje",
     search_fields = ["nombre"]
-    list_filter = ["nombre"]
-    list_per_page = 2
+    list_per_page = 10
 
-
+# Register your models here.
+admin.site.register(Insumo, InsumoAdmin)
 admin.site.register(Servicio, ServicioAdmin)
-admin.site.register(Slider, SilderAdmin)
+admin.site.register(Contacto, ContactoAdmin)
+admin.site.register(Slider, SliderAdmin)
 admin.site.register(Galeria, GaleriaAdmin)
 admin.site.register(Mision, MisionAdmin)
 admin.site.register(Vision, VisionAdmin)
 
-# change admin title
-admin.site.site_header = "Administración Car Wash"
-# change admin site title
+admin.site.site_header = "Administración de CarWash"
 admin.site.site_title = "CarWash"
-# change admin index title
-admin.site.index_title = "Administración"
+admin.site.index_title = "Sitio Admnistrativo de CarWash"

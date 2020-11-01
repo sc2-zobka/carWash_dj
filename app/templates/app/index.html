@@ -1,0 +1,96 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+ - Inicio
+{% endblock %}
+
+{% load static %}
+
+{% block js %}
+
+<!--Slider script-->
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.slider').bxSlider({
+            auto: true,
+            pause: 2000,
+            mode:'fade',
+             
+        });
+    });
+</script>
+
+{% endblock %}
+
+{% block css %}
+
+<!--Silder Plug-in-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+{% endblock %}
+
+{% block contenido %}
+
+<!--*********** SLIDER **************-->
+<div class="slider">
+    {% for s in sliders %}
+    <div>
+        {% if s.imagen %}
+        <img class="banner" src="{{ s.imagen.url }}" alt="">
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<!---------------------Servicios-------------------------->
+{% load humanize %}
+<div class="servicios">
+
+    {% for s in servicios %}
+    <div class="servicio">
+        <div class="contenedor_servicio">
+            {% if s.imagen %}
+            <img src="{{ s.imagen.url }}" alt="">
+            {% endif %}
+
+            <div class="detalle">
+                <h2>{{ s.nombre | capfirst }}</h2>
+                <h3>Desde ${{ s.precio | intcomma }}</h3>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+<!---------------------Resenas de Clientes-------------------------->
+<div class="resenas">
+    
+    <div class="resena">
+        <div class="resena-text">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Corrupti enim voluptatibus rerum architecto.
+        </div>
+        
+        <p>Lorem ipsum</p>
+    </div>
+
+    <div class="resena">
+        <div class="resena-text">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Corrupti enim voluptatibus rerum architecto.
+        </div>
+        <p>Lorem ipsum</p>
+    </div>
+
+    <div class="resena">
+        <div class="resena-text">
+            Oink ipsum, dolor sit amet consectetur adipisicing elit.
+            Corrupti enim voluptatibus rerum architecto.
+        </div>
+        <p>Lorem ipsum</p>
+    </div>
+</div>
+
+{% endblock %}

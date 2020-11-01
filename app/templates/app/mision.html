@@ -1,60 +1,29 @@
 {% extends 'app/base.html' %}
 
-{% block title %}Quienes Somos{% endblock %}
+{% block title %}
+ - Quienes somos
+{% endblock %}
 
 {% load static %}
 
-{% block plugins %}
-
-    {# Fancy Box #}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-
-{% endblock %}
-
 {% block contenido %}
-    
-    {# Mision #}
-        {# Implementar singleton a nivel de modelo#}
-        {% if mision.descripcion %}
-            <blockquote>
-                {{ mision.descripcion }}
-                <span>Misión</span>
-            </blockquote>
-        {% else %}
-                <blockquote>
-                    Car Wash!
-                    <span>Misión</span>
-                </blockquote>
-        {% endif %}    
-    
-    {# Vision #}
-    {% if vision.descripcion %}
-            <blockquote>
-                {{ vision.descripcion }}
-                <span>Visión</span>
-            </blockquote>
-        {% else %}
-                <blockquote>
-                    Car Wash!
-                    <span>Visión</span>
-                </blockquote>
-        {% endif %}
 
-    {# Galeria #}
-    <div class="galeria">
-        {% for g in galeria %}
-            {% if  g.imagen %}
-                <a data-fancybox="gallery" href="{{ g.imagen.url }} ">
-                    <img src="{{ g.imagen.url }} ">
-                </a>
-            {% endif %}
-        {% endfor %}
-    </div>
+<blockquote>
+    {{ mision.mensaje }}
+    <span>Misión</span>
+</blockquote>
 
-{% endblock  %}
+<blockquote>
+    {{ vision.mensaje }}
+    <span>Visión</span>
+</blockquote>
 
-{% block js %}
-
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<div class="galeria">
+    {% for g in galerias %}
+    <a data-fancybox="gallery" href="{{ g.imagen.url }}">
+        <img src="{{ g.imagen.url }}">
+    </a>
+    {% endfor %}
+</div>
 
 {% endblock %}

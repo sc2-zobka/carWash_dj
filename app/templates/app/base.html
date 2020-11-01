@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bienvenido a Car Wash">
-    <title>Car Wash |{% block title %}{% endblock %}</title>
-   
-    {# load css main file #}
+    <title>Car Wash {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    {% block css %}
+    {% endblock %}
+    
     {% load static %}
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
-    <link rel="icon" href="{% static 'app/img/car.png' %}">
-
-    {% block plugins %}
-    {% endblock %}
-
+    <link rel="icon" href="{% static 'app/img/icon.png' %}">
 
 </head>
 <body>
-    {# sera heredado #}
-    <header id="header">
+    
+    <header >
         
         <img src="{% static 'app/img/menuiconwhite.png' %}" alt="menu" class="menu" id="menu">
         
@@ -27,14 +25,14 @@
             <img src="{% static 'app/img/logo.png' %}" alt="logo" class="logo">
             
             <div id="contenedor_feriado">
-                <p>Proximo feriado</p>
-                <p id="feriado"></p>
+                <h6>Proximo feriado</h6>
+                <h6 id="feriado"></h6>
             </div>
         
         </div>
         
         <div>
-            <nav id="nav">
+            <nav>
                 <ul>
                     <li>
                         <a href="{% url 'home' %}">Home</a>
@@ -46,29 +44,36 @@
                         <a href="{% url 'mision' %}">Quienes Somos</a>
                     </li>
                     <li>
-                        <a href="#">Iniciar Sesion</a>
+                        {% if user.is_authenticated %}
+                            {% if perms.app.add_insumo %}
+                            <a href="{% url 'insumos' %}">Insumos</a>
+                            &nbsp;
+                            {% endif %}
+                            <a href="#">@{{ user.username }} |</a>
+                            <a href="{% url 'logout' %}">Cerrar sesion</a>
+                        {% else %}
+                            <a href="{% url 'login' %}">Iniciar sesion</a>
+                        {% endif %}
                     </li>
-                    
                 </ul>
             </nav>
         </div>
 
     </header>
 
-    <div id="contenido">
+    <div id="contenido" class="container">
 
         {% block contenido %}
-        {% endblock  %}
+        {% endblock %}
 
     </div>
 
-    {# sera heredado #}
     <footer>
         <div>
 			<nav>
 				<ul>
                     <li>
-                        <span>Copyright 2020 © Todos Los Derechos Reservados </span> |
+                        <span>Copyright 2020 © Todos Los Derechos Reservados </span>
                     </li>
                     <li>
                         <a href="{% url 'home' %}">Home</a>
@@ -84,18 +89,15 @@
         </div>
     </footer>
 
-    {# sera heredado #}
+
     <!--JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     
-
     <script src="{% static 'app/js/menu.js' %}"></script>
     <script src="{% static 'app/js/feriados.js' %}"></script>
-    
-    {# all js files located at bottom DOM not included in base.template #}
+
     {% block js %}
     {% endblock %}
-
 
 </body>
 </html>

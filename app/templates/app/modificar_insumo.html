@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+ - Modificar Insumo
+{% endblock %}
+
+{% load static %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        {% load crispy_forms_tags %}
+        <form method='post' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+
+            <input class="btn btn-primary" type="submit" value="Modificar">
+            <input class="btn btn-secondary" type="reset" value="Limpiar">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

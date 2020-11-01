@@ -1,0 +1,101 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+ - Insumos
+{% endblock %}
+
+{% load static %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+{% if messages %}
+<div>
+    {% for message in messages %}
+        <script>
+            Swal.fire({
+                "title": "Feliciades",
+                "text": "{{message}}",
+                "icon": "success"
+            })
+        </script>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    function eliminar(id) {
+        Swal.fire({
+                "title": "¿Está seguro?",
+                "text": "Esta acción no se podra deshacer",
+                "icon": "warning",
+                "confirmButtonText": "Si, eliminar",
+                "cancelButtonText": "No, cancelar",
+                "showCancelButton": true
+            })
+            .then(function(result) {
+                if (result.isConfirmed) {
+                    window.location.href = "/eliminar_insumo/"+id+"/"
+                }
+            })
+    }
+</script>
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        {% load crispy_forms_tags %}
+        <form method='post' enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+
+            <div class="d-flex justify-content-center">
+                <input class="btn btn-primary btn-sm" type="submit" id="guardar_i" value="Guardar">
+                &nbsp;
+                <input class="btn btn-secondary btn-sm" type="reset" value="Limpiar">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if perms.app.view_insumo %}
+<h2>Listado de insumos</h2>
+<table class="table table-striped table-hover table-responsive-sm" id="pagtable">
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Descripción</th>
+        <th>Stock</th>
+        {% if perms.app.change_insumo or perms.app.delete_insumo %}
+        <th>Opciones</th>
+        {% endif %}
+    </tr>
+    {% for i in entity %}
+    <tr>
+        <td> {{ i.nombre }} </td>
+        <td> {{ i.precio }} </td>
+        <td> {{ i.imagen }} </td>
+        <td> {{ i.descripcion }} </td>
+        <td> {{ i.stock }} </td>
+        {% if perms.app.change_insumo or perms.app.delete_insumo %}
+        <td>
+            {% if perms.app.change_insumo %}
+            <a class="btn btn-primary btn-sm" href="{% url 'modificar_insumo' i.id %}">Modificar</a>
+            {% endif %}
+            {% if perms.app.delete_insumo %}
+            <a class="btn btn-danger btn-sm" href="#" onclick="eliminar({{ i.id }})">Eliminar</a>
+            {% endif %}
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% include 'app/paginator.html' %}
+
+{% endif %}
+
+{% endblock %}

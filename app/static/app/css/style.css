@@ -5,23 +5,19 @@
 
 /**********     HEADER   **************/
 body {
-    /*background-color: whitesmoke;*/
+    background-color: whitesmoke;
     font-family: "Ubuntu";
-    background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(137,171,245,0.37) 0%, rgba(245,247,252,1) 100.2% );
-    /*
-    background-image: radial-gradient( circle 1224px at 10.6% 8.8%,  rgba(255,255,255,1) 0%, rgba(153,202,251,1) 100.2% );
-     */
     
-     
+    
 }
 
 header {
     width: 100%;
     height: 80px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(5,41,53,1) 49%, rgb(36, 163, 189) 100%); 
+    background-color: #052935;
     display: flex;
     font-size: 18px;
+    
 }
 
 header > div {
@@ -127,9 +123,7 @@ nav > ul > li > a {
     -webkit-box-shadow: 10px 10px 13px -7px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 13px -7px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 13px -7px rgba(0,0,0,0.75);
-
 }
-
 
 .servicios .servicio .contenedor_servicio .detalle {
     text-align: center;
@@ -201,11 +195,11 @@ blockquote {
   font-style:italic;
   color: #555555;
   padding:1.2em 30px 1.2em 75px;
-  border-left:8px solid rgb(18, 128, 181) ;
+  border-left:8px solid #78C0A8 ;
   line-height:1.6;
   position: relative;
   background:#EDEDED;
-} 
+}
 
 blockquote::before {
   font-family:Arial;
@@ -239,11 +233,7 @@ blockquote span {
 footer {
     width: 100%;
     height: 80px;
-    background: rgb(2,0,36);
-    background: linear-gradient(255deg, rgba(2,0,36,1) 0%, rgba(5,41,53,1) 20%, rgb(36, 163, 189) 100%); 
-    
-    /*background: linear-gradient(267deg, rgba(2,0,36,1) 0%, rgba(5,41,53,1) 25%, rgb(170, 222, 233) 100%); 
-    */
+    background-color: #78C0A8;
   }
 
 footer > div > nav {
@@ -256,18 +246,6 @@ footer > div > nav {
 footer > div > nav > ul > li > p {
     color:  grey;
     text-decoration: none;
-}
-
-footer > div > nav > ul > li > span {
-    color:  white;
-    text-decoration: none;
-    font-size: small;
-}
-
-footer > div > nav > ul > li  {
-    color:  white;
-    
-    
 }
 
 /*************************GALERIA****************************/
@@ -283,22 +261,19 @@ footer > div > nav > ul > li  {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+
 }
 
 /*************************CONTACTO****************************/
 #div-map {
     width: 100%;
     height: 400px;
-    min-height: 60vh; /*80vh: de ViewPort*/
 }
 
 #div-map #map {
     width: 100%;
     height: 400px;
 }
-
-
 
 /*************************MEDIA QUERIES****************************/
 
@@ -339,22 +314,6 @@ footer > div > nav > ul > li  {
     
     #contenedor_feriado {
         display: none;   
-    }
-
-    #div-map {
-        width: 100%;
-        height: 100%;
-        display: flex;
-       
-    }
-    
-    #div-map #map {
-        width: 100%;
-        height: auto;
-        align-items: flex-end;
-        border-radius: 10px;
-        
-        
     }
 
     .menu{

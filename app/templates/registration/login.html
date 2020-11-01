@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+ - Log in
+{% endblock %}
+
+{% load static %}
+
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<div>
+    <div class="row">
+        <div class="col-12 col-md-4 offset-md-4">
+            <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion</h1>
+            {% load crispy_forms_tags %}
+            <form action="" method='post' class="form-signin">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <input type="submit" class="btn btn-lg btn-primary btn-block">
+            </form>
+            <div class="submits">
+                <br>
+                <ul>
+                    <li>
+                        <a href="{% url 'registro' %}">Registro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
