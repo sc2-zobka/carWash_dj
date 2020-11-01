@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Servicio, Slider, Galeria, Vision, Mision, Insumo
 from .forms import ContactoForms, InsumoForms, CustomUserCreationForm
 from django.contrib import messages
@@ -68,7 +68,8 @@ def insumos(request):
 @login_required
 @permission_required('app.change_insumo')
 def modificar_insumo(request, id):
-    insumo = Insumo.objects.get(id=id)
+    #insumo = Insumo.objects.get(id=id)
+    insumo = get_object_or_404(Insumo, id=id)
     data = {
         "form": InsumoForms(instance=insumo)
     }
@@ -86,7 +87,8 @@ def modificar_insumo(request, id):
 @login_required
 @permission_required('app.delet_insumo')
 def eliminar(request, id):
-    insumo = Insumo.objects.get(id=id)
+    #insumo = Insumo.objects.get(id=id)
+    insumo = get_object_or_404(Insumo, id=id)
     insumo.delete()
     messages.success(request, "Eliminado correctamente")
     return redirect(to="insumos")

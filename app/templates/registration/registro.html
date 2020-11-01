@@ -13,15 +13,18 @@
 {% block contenido %}
 
 <div>
-    <div class="row">
+    <div class="row" style="height:100%">
         <div class="col-12 col-md-4 offset-md-4">
             <h1 class="h3 mb-3 font-weight-normal">Registrar usuario</h1>
             {% load crispy_forms_tags %}
             <form action="" method='post'>
                 {% csrf_token %}
                 {{ form | crispy }}
-                <input class="btn btn-primary" type="submit" value="Registrarse">
-                <input class="btn btn-secondary" type="reset" value="Limpiar">
+                <input class="btn btn-primary btn-sm" type="submit" value="Registrarse">
+                <input class="btn btn-secondary btn-sm" type="reset" value="Limpiar">
+
+                <a href="{% url 'home' %}">Home</a> |
+                <a href="{% url 'login' %}">login</a>
             </form>
         </div>
     </div>

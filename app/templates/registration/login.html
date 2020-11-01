@@ -21,15 +21,10 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <input type="submit" class="btn btn-lg btn-primary btn-block">
+                <tr>
+                <a href="{% url 'home' %}">Home</a> |
+                <a href="{% url 'registro' %}">Registro</a>
             </form>
-            <div class="submits">
-                <br>
-                <ul>
-                    <li>
-                        <a href="{% url 'registro' %}">Registro</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

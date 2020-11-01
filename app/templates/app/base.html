@@ -53,6 +53,7 @@
                             <a href="{% url 'logout' %}">Cerrar sesion</a>
                         {% else %}
                             <a href="{% url 'login' %}">Iniciar sesion</a>
+                            <a href="{% url 'registro' %}">Registro</a>
                         {% endif %}
                     </li>
                 </ul>
@@ -61,7 +62,7 @@
 
     </header>
 
-    <div id="contenido" class="container">
+    <div class="container">
 
         {% block contenido %}
         {% endblock %}
