@@ -15,7 +15,7 @@ class Servicio(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
     class Meta:
         verbose_name = "Servicio"
         verbose_name_plural = "Servicio"
@@ -52,7 +52,10 @@ class Galeria(models.Model):
 class Mision(models.Model):
 
     nombre = models.CharField(max_length=30)
-    descripcion = models.TextField()
+    descripcion = models.TextField(max_length=200, blank=True,
+                                   help_text="Escriba un mensaje para\
+                                   mostrar en la seccion de Mision\
+                                   del sitio web")
 
     def __str__(self):
         return self.nombre
@@ -65,7 +68,10 @@ class Mision(models.Model):
 class Vision(models.Model):
 
     nombre = models.CharField(max_length=30)
-    descripcion = models.TextField()
+    descripcion = models.TextField(max_length=200, blank=True,
+                                   help_text="Escriba un mensaje para\
+                                   mostrar en la seccion de Vision\
+                                   del sitio web")
 
     def __str__(self):
         return self.nombre
@@ -73,6 +79,33 @@ class Vision(models.Model):
     class Meta:
         verbose_name = "Vision"
         verbose_name_plural = "Vision"
+
+
+opciones_consulta = [
+    [0, "consulta"],
+    [1, "reclamo"],
+    [2, "sugerencia"],
+    [3, "felicitaciones"]
+]
+
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=50)
+    telefono = models.IntegerField()
+    email = models.EmailField()
+    opciones_consulta = models.IntegerField(choices=opciones_consulta)
+    mensaje = models.TextField()
+    recibir_ofertas = models.BooleanField(name="ofertas",
+                                          help_text="Reciba nuestras ofertas\
+                                              exclusivas!")
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Contacto"
+        verbose_name_plural = "Contacto"
+
 
 # Insumo must be handled outside of Django Admin
 

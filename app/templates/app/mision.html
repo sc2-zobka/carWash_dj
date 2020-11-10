@@ -14,18 +14,18 @@
 {% block contenido %}
     
     {# Mision #}
-        {# Implementar singleton a nivel de modelo#}
-        {% if mision.descripcion %}
+    {# Implementar singleton a nivel de modelo#}
+    {% if mision.descripcion %}
+        <blockquote>
+            {{ mision.descripcion }}
+            <span>Misión</span>
+        </blockquote>
+    {% else %}
             <blockquote>
-                {{ mision.descripcion }}
+                Car Wash!
                 <span>Misión</span>
             </blockquote>
-        {% else %}
-                <blockquote>
-                    Car Wash!
-                    <span>Misión</span>
-                </blockquote>
-        {% endif %}    
+    {% endif %}    
     
     {# Vision #}
     {% if vision.descripcion %}
