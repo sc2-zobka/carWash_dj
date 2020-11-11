@@ -100,10 +100,10 @@ class ContactoAdmin(admin.ModelAdmin):
         Display components on "Contacto" admin section
         based on Contacto model's fields
     """
-    list_display = ["nombre"]
+    list_display = ["nombre"]  # add list comprehension
     search_fields = ["nombre"]
     list_filter = ["nombre"]
-    list_per_page = 2
+    list_per_page = 10
 
 
 admin.site.register(Servicio, ServicioAdmin)

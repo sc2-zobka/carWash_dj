@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # only if django version >= 3.0
 
 MIDDLEWARE = [

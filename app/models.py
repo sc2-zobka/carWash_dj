@@ -93,7 +93,8 @@ class Contacto(models.Model):
     nombre = models.CharField(max_length=50)
     telefono = models.IntegerField()
     email = models.EmailField()
-    opciones_consulta = models.IntegerField(choices=opciones_consulta)
+    opciones_consulta = models.IntegerField(choices=opciones_consulta,
+                                            name="motivo")
     mensaje = models.TextField()
     recibir_ofertas = models.BooleanField(name="ofertas",
                                           help_text="Reciba nuestras ofertas\

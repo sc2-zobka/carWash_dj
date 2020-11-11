@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from .models import Servicio, Slider, Galeria, Mision, Vision
+from .models import Servicio, Slider, Galeria, Mision, \
+    Vision, Contacto
+from .forms import ContactoForm
 
 # Create your views here.
 
@@ -19,7 +21,24 @@ def home(request):
 
 
 def contacto(request):
-    return render(request, 'app/contacto.html')
+    # if form Contacto is empty(template) it'll be sent right back here
+    data = {
+        'form': ContactoForm()  # Instantiating a new empty form
+    }
+
+    # POST indicates a form with data was submit
+    # POST is a dict with data
+    if request.method == 'POST':
+        # store Contacto form data into this var
+        formulario = ContactoForm(data=request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Contacto enviado! :)"
+
+        data["form"]: formulario
+
+    return render(request, 'app/contacto.html', data)
 
 
 def mision(request):
